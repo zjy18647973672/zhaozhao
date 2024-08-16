@@ -1,0 +1,58 @@
+body{
+    /* 布局（弹性盒子） */
+    display: flex; 
+    /* 主轴方向 */
+    flex-direction:column;
+    /* 弹性子元素在主轴上对齐方式 */
+    justify-content:center;
+    /* 弹性子元素在辅轴上对齐方式 */
+    align-items:center;
+    /* 高度（vh表示相对浏览器视口高度） */
+    height:100vh;
+    /* 外边距 */
+    margin: 0;
+    /* 背景颜色 */
+    background-color: #F7F7F7;
+}
+/* id选择器，对应名字为timer的div盒子 */
+#timer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* 字体大小（1em=16px） */
+    font-size: 4em;
+    /* 下外边距 */
+    margin-bottom: 40px;
+}
+label{
+    margin: 0 5px;
+}
+#time{
+    /* 内边距（上下 左右） */
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    /* 边框圆角弧度 */
+    border-radius: 10px;
+    /* 盒子阴影 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+#controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    font-size: 1em;
+    color: #FFFFFF;
+    background-color: #0000FF;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    margin: 10px 20px;
+    /* 鼠标形状 */ 
+    cursor: pointer; 
+}
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> 计时器（vue） </title>
+  <link rel="stylesheet" href="count.css">
+  <!-- 引入Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div id="timer">
+      <label id="time"> {{ hour }} </label>
+      <label> : </label>
+      <label id="time"> {{ minute }} </label>
+      <label> : </label>
+      <label id="time"> {{ second }} </label>
+    </div>
+    <div>
+      <button @click="start"> 开始 </button>
+      <button @click="stop"> 停止 </button>
+      <button @click="reset"> 重置</button>
+    </div>
+
+  </div>
+  
+  <script>
+    let timer;
+    new Vue({
+      el:'#app',
+      data: function() {
+        return{
+          hour: '00',
+          minute: '00',
+          second: '00'
+        }
+      },
+      methods: {
+        start: function(){
+          if(!timer){
+            // 定时器非空时，开始计时
+            timer = setInterval(() => {
+              // 每隔1000ms进行一次变化
+              this.second++;
+              if(this.second == 60){
+                this.second = '00';
+                this.minute++;
+                if(this.minute == 60){
+                  this.minute = 0;
+                  this.hour++;
+                }
+              }
+              this.second = pad(this.second);
+              this.minute = pad(this.minute);
+              this.hour = pad(this.hour);
+            }, 1000)
+          }
+        },
+        stop: function(){
+          clearInterval(timer); // 清除计时器
+          timer = null;
+        },
+        reset: function(){
+          this.stop();
+          this.second = '00';
+          this.minute = '00';
+          this.hour = '00';
+        }
+      }
+    })
+    function pad(num){
+      return num.toString().padStart(2, "0");
+  }
+  </script>
+</body>
+</html>
